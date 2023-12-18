@@ -14,18 +14,10 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
-	"os"
-	"path/filepath"
 )
 
 func main() {
-	exePath, err := os.Executable()
-	if err != nil {
-		panic(err)
-	}
-	configPath := filepath.Join(filepath.Dir(exePath), "config.yaml")
-	viper.SetConfigFile(configPath)
-
+	viper.SetConfigFile("config.yaml")
 	if err := viper.ReadInConfig(); err != nil {
 		panic(err)
 	}
